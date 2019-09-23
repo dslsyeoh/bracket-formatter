@@ -4,11 +4,7 @@ Simple Bracket Formatter
 Overview
 --
 1. Formalize mathematics equations to bracket.
-2. Support only basic operations listed belows
-    - `Addition`
-    - `Subtraction`
-    - `Multiplication`
-    - `Division`
+2. Support `Addition`, `Subtraction`, `Multiplication` and `Division`.
 
 Sample Input
 --

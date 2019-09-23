@@ -12,14 +12,14 @@ import java.util.stream.Collectors;
 public class BracketFormatter implements Formatter
 {
     private static final String FILTER_REGEX = "[-+=]";
-    private static final String EXCLUDE_REGEX = "[^-+]";
+    private static final String INCLUDE_REGEX = "[^-+]";
 
     @Override
     public String formalizeToBracket(String input)
     {
         String trimmed = Arrays.stream(input.split("")).filter(s -> !s.matches("[\\s]")).collect(Collectors.joining());
         List<String> values = Arrays.stream(trimmed.split(FILTER_REGEX)).filter(s -> !s.isEmpty()).collect(Collectors.toList());
-        List<String> operations = Arrays.stream(trimmed.split(EXCLUDE_REGEX)).filter(s -> !s.isEmpty()).collect(Collectors.toList());
+        List<String> operations = Arrays.stream(trimmed.split(INCLUDE_REGEX)).filter(s -> !s.isEmpty()).collect(Collectors.toList());
         StringBuilder formalized = new StringBuilder();
 
         int size = trimmed.indexOf('=') != -1 ? values.size() - 1 : values.size();

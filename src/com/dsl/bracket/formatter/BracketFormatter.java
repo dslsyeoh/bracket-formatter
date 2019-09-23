@@ -3,7 +3,7 @@
  * Copyright (c) 2019. All rights reserved
  */
 
-package com.dsl.expression.sequence.utils;
+package com.dsl.bracket.formatter;
 
 import java.util.Arrays;
 import java.util.List;

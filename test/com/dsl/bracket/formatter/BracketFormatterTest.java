@@ -3,9 +3,9 @@
  * Copyright (c) 2019. All rights reserved
  */
 
-package com.dsl.expression.sequence;
+package com.dsl.bracket.formatter;
 
-import com.dsl.expression.sequence.utils.BracketFormatter;
+import com.dsl.bracket.formatter.BracketFormatter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

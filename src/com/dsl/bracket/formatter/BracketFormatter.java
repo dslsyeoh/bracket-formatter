@@ -29,16 +29,7 @@ public class BracketFormatter implements Formatter
             String value = values.get(index);
             if(value.contains(")*") || value.contains(")/"))
             {
-                int bracketAt = 0;
-                for(int i = formalized.length() - 1 ; i > 0; i--)
-                {
-                    if(Objects.equals(formalized.charAt(i), '('))
-                    {
-                        bracketAt = i;
-                        break;
-                    }
-                }
-                formalized.insert(bracketAt, "(").append(value).append(")");
+                formalized.insert(insertAt(formalized), "(").append(value).append(")");
             }
             else if(value.contains("*") || value.contains("/"))
             {
@@ -55,5 +46,17 @@ public class BracketFormatter implements Formatter
         }
 
         return formalized.toString();
+    }
+
+    private int insertAt(StringBuilder formalized)
+    {
+        for(int index = formalized.length() - 1 ; index > 0; index--)
+        {
+            if(Objects.equals(formalized.charAt(index), '('))
+            {
+                return index;
+            }
+        }
+        return 0;
     }
 }

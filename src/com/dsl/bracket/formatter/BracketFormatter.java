@@ -7,6 +7,7 @@ package com.dsl.bracket.formatter;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class BracketFormatter implements Formatter
@@ -31,7 +32,7 @@ public class BracketFormatter implements Formatter
                 int bracketAt = 0;
                 for(int i = formalized.length() - 1 ; i > 0; i--)
                 {
-                    if(formalized.charAt(i) == '(')
+                    if(Objects.equals(formalized.charAt(i), '('))
                     {
                         bracketAt = i;
                         break;

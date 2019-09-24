@@ -21,31 +21,35 @@ public class BracketFormatter implements Formatter
         String trimmed = Arrays.stream(input.split("")).filter(s -> !s.matches("[\\s]")).collect(Collectors.joining());
         List<String> values = Arrays.stream(trimmed.split(EXCLUDE_REGEX)).filter(s -> !s.isEmpty()).collect(Collectors.toList());
         List<String> operations = Arrays.stream(trimmed.split(FILTER_REGEX)).filter(s -> !s.isEmpty()).collect(Collectors.toList());
-        StringBuilder formalized = new StringBuilder();
 
-        int size = trimmed.indexOf('=') != -1 ? values.size() - 1 : values.size();
+        return formalize(values, operations, trimmed.indexOf('=') != -1);
+    }
+
+    private String formalize(List<String> values, List<String> operations, boolean hasEqual)
+    {
+        StringBuilder formalize = new StringBuilder();
+
+        int size = hasEqual ? values.size() - 1 : values.size();
         for(int index = 0; index < size; index++)
         {
             String value = values.get(index);
+
             if(value.contains(")*") || value.contains(")/"))
             {
-                formalized.insert(insertAt(formalized), "(").append(value).append(")");
+                formalize.insert(insertAt(formalize), "(").append(value).append(")");
             }
             else if(value.contains("*") || value.contains("/"))
             {
-                formalized.append("(").append(value).append(")");
+                formalize.append("(").append(value).append(")");
             }
             else
             {
-                formalized.append(value);
+                formalize.append(value);
             }
-            if(operations.size() > index)
-            {
-                formalized.append(operations.get(index));
-            }
+            if(operations.size() > index) formalize.append(operations.get(index));
         }
 
-        return formalized.toString();
+        return formalize.toString();
     }
 
     private int insertAt(StringBuilder formalized)

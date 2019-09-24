@@ -15,7 +15,7 @@ public class BracketFormatterTest
 {
     private BracketFormatter bracketFormatter;
 
-    @BeforeEach
+    @BeforeAll
     public void setup()
     {
         bracketFormatter = new BracketFormatter();

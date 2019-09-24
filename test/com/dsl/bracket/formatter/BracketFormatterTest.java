@@ -6,10 +6,7 @@
 package com.dsl.bracket.formatter;
 
 import com.dsl.bracket.formatter.BracketFormatter;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 
@@ -18,7 +15,7 @@ public class BracketFormatterTest
 {
     private BracketFormatter bracketFormatter;
 
-    @BeforeAll
+    @BeforeEach
     public void setup()
     {
         bracketFormatter = new BracketFormatter();
@@ -144,4 +141,15 @@ public class BracketFormatterTest
         Assertions.assertEquals("(1+2+3+4+5+6)+(8*9)+(1/2*3)+10+(2*3*4/5)", bracketFormatter.formalizeToBracket("(1 + 2 + 3 + 4 + 5 + 6) + 8 * 9 + 1 / 2 * 3 + 10 + 2 * 3 * 4 / 5"));
     }
 
+    @Test
+    public void testFormalizeToBracket_21()
+    {
+        Assertions.assertEquals("(1+2+3+4+5+6)+((1+2+3)*9)+(1/2*3)+10+(2*3*4/5)", bracketFormatter.formalizeToBracket("(1 + 2 + 3 + 4 + 5 + 6) + (1 + 2 + 3) * 9 + 1 / 2 * 3 + 10 + 2 * 3 * 4 / 5"));
+    }
+
+    @Test
+    public void testFormalizeToBracket_22()
+    {
+        Assertions.assertEquals("(1+2+3+4+5+6)+((1+2+3)*8*8)+(1+2+3)+(2*3)+(1/2*3)+10+(2*3*4/5)", bracketFormatter.formalizeToBracket("(1 + 2 + 3 + 4 + 5 + 6) + (1 + 2 + 3) * 8 * 8 + (1 + 2 + 3) + 2 * 3 + 1 / 2 * 3 + 10 + 2 * 3 * 4 / 5"));
+    }
 }

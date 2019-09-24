@@ -26,7 +26,11 @@ public class BracketFormatter implements Formatter
         for(int index = 0; index < size; index++)
         {
             String value = values.get(index);
-            if(value.contains("*") || value.contains("/"))
+            if(value.contains(")*") || value.contains(")/"))
+            {
+                formalized.insert(0, "(").append(value).append(")");
+            }
+            else if(value.contains("*") || value.contains("/"))
             {
                 formalized.append("(").append(value).append(")");
             }

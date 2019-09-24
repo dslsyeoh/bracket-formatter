@@ -132,4 +132,16 @@ public class BracketFormatterTest
         Assertions.assertEquals("((1+2+3+4+5+6)*8*9)+(1/2*3)+10+(2*3*4/5)", bracketFormatter.formalizeToBracket("(1 + 2 + 3 + 4 + 5 + 6) * 8 * 9 + 1 / 2 * 3 + 10 + 2 * 3 * 4 / 5"));
     }
 
+    @Test
+    public void testFormalizeToBracket_19()
+    {
+        Assertions.assertEquals("(1+2+3+4+5+6)+8+9+(1/2*3)+10+(2*3*4/5)", bracketFormatter.formalizeToBracket("(1 + 2 + 3 + 4 + 5 + 6) + 8 + 9 + 1 / 2 * 3 + 10 + 2 * 3 * 4 / 5"));
+    }
+
+    @Test
+    public void testFormalizeToBracket_20()
+    {
+        Assertions.assertEquals("(1+2+3+4+5+6)+(8*9)+(1/2*3)+10+(2*3*4/5)", bracketFormatter.formalizeToBracket("(1 + 2 + 3 + 4 + 5 + 6) + 8 * 9 + 1 / 2 * 3 + 10 + 2 * 3 * 4 / 5"));
+    }
+
 }

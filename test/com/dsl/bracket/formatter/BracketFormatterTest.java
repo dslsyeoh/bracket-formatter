@@ -5,8 +5,10 @@
 
 package com.dsl.bracket.formatter;
 
-import com.dsl.bracket.formatter.BracketFormatter;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS;
 

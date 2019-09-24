@@ -33,7 +33,7 @@ public class BracketFormatter implements Formatter
                 {
                     if(formalized.charAt(i) == '(')
                     {
-                        bracketAt = i + 1;
+                        bracketAt = i;
                         break;
                     }
                 }

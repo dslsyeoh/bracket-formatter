@@ -154,4 +154,10 @@ public class BracketFormatterTest
     {
         Assertions.assertEquals("(1+2+3+4+5+6)+((1+2+3)*8*8)+(1+2+3)+(2*3)+(1/2*3)+10+(2*3*4/5)", bracketFormatter.formalizeToBracket("(1 + 2 + 3 + 4 + 5 + 6) + (1 + 2 + 3) * 8 * 8 + (1 + 2 + 3) + 2 * 3 + 1 / 2 * 3 + 10 + 2 * 3 * 4 / 5"));
     }
+
+    @Test
+    public void testFormalizeToBracket_23()
+    {
+        Assertions.assertEquals("((1+2)*8*8)-(3/(1+3)*8)-(2*8)+3", bracketFormatter.formalizeToBracket("(1 + 2) * 8 * 8 - (3 / (1 + 3) * 8) - 2 * 8 + 3"));
+    }
 }

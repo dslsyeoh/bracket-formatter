@@ -36,7 +36,22 @@ public class BracketFormatter implements Formatter
 
             if(value.contains(")*") || value.contains(")/"))
             {
-                formalize.insert(insertAt(formalize), "(").append(value).append(")");
+                if(hasFormalized(value))
+                {
+                    formalize.append(value);
+                }
+                else
+                {
+                    formalize.insert(insertAt(formalize), "(").append(value).append(")");
+                }
+            }
+            else if(value.contains("-(") || value.contains("+("))
+            {
+                formalize.append(value);
+            }
+            else if(value.contains("/(") || value.contains("*("))
+            {
+                formalize.append(value);
             }
             else if(value.contains("*") || value.contains("/"))
             {
@@ -50,6 +65,12 @@ public class BracketFormatter implements Formatter
         }
 
         return formalize.toString();
+    }
+
+    private boolean hasFormalized(String value)
+    {
+        String[] strings = value.split("");
+        return strings[strings.length - 1].equalsIgnoreCase(")");
     }
 
     private int insertAt(StringBuilder formalized)
